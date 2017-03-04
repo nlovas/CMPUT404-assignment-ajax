@@ -276,22 +276,25 @@ mouse.mousedraggers.push(function(x,y,clicked,e) {
 
 function update() {
     //XXX: TODO Get the world from the webservice using a XMLHTTPRequest
-    var url = host + "/world";
+    var url = "/world";
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', url);
+    xhr.open('GET', url, true);
     xhr.onreadystatechange = function(){
 	if(xhr.readyState === 4){
 		if(xhr.status === 200){ //success
-			alert(xhr.responseText);			
+			//alert(xhr.responseText);
+			var tmp = JSON.parse(xhr.responseText);
+			world = tmp;
+			drawNextFrame();
 	 
 			}
 		else{ //failure
 			alert("ERROR: " + xhr.status);
 			}
 		}
-	}   
+	};   
 	
-
+    xhr.send();
     drawFrame();
 }
 
