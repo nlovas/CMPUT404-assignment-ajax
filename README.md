@@ -14,7 +14,9 @@ Generally everything is LICENSE'D under the Apache 2 license by Abram Hindle.
 
 Resources:  
 
-Referenced Ryan Satyabrata's code to figure out how to send the World with json & how to deal with post and put, and how to use stringify:
+Collaborated with Jillian Lovas, CCID jlovas
+
+Referenced Ryan Satyabrata's code to figure out how to send the World with json & how to deal with post and put, what kind of callback function to use, and how to use stringify:
 (https://github.com/kobitoko/CMPUT404-assignment-ajax/blob/master/server.py)
 (https://github.com/kobitoko)
 
@@ -30,5 +32,8 @@ On Stack Overflow Answered by aneroid (http://stackoverflow.com/users/1431750/an
 
 Sending an XMLHTTPRequest:
 https://www.w3schools.com/xml/ajax_xmlhttprequest_send.asp
+
+How to use callback functions:
+http://javascriptissexy.com/understand-javascript-callback-functions-and-use-them/
 
 

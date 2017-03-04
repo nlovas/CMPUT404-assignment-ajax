@@ -40,9 +40,9 @@ function sendJSONXMLHTTPRequest(url, objects, callback) {
                 if (xhr.status==200) {
                     //XXX: parse some JSON from the request!
                     //XXX: Pass the data to the callback!
-		    //alert("yay!");
-		//	callback(data);
-		   
+		    if(callback !== null){
+		    callback(JSON.parse(xhr.responseText));
+		    }
                 }
             } 
             catch(e) {
@@ -53,13 +53,21 @@ function sendJSONXMLHTTPRequest(url, objects, callback) {
     //XXX: POST to a URL
     //XXX: set the mimetype and the accept headers!
     // Remember to use application/json !
-	//var url = host + "entity/" + objects[0];	
+	if(objects === null){ //doing a GET request
+	xhr.open("GET", url, true);
+	xhr.send();
+	}	
+
+	else{ //doing a POST request
 	xhr.open("POST", url, true);
-	console.log(url);
-	console.log(xhr.responseURL);
 	xhr.setRequestHeader("Content-Type", "application/json");
 	xhr.setRequestHeader("Accept", "*");
 	xhr.send(JSON.stringify(objects));
+	}	
+	
+
+
+	
 }
 
 
@@ -146,13 +154,14 @@ function getPosition(e) {
 
 function addEntity(entity, data) {
     world[entity] = data;
-    drawNextFrame(); // (but should we?)
+    
     //XXX: Send a XHTML Request that updates the entity you just  modified!
 	
 	//var url = host + "/entity/"+ entity;
 	var url = "/entity/" + entity;
 	//var newstuff = {entity, data}
-	sendJSONXMLHTTPRequest(url, data, drawFrame);
+	sendJSONXMLHTTPRequest(url, data, null);
+drawNextFrame(); // (but should we?)
 }
 
 var counter = 0;
@@ -277,7 +286,7 @@ mouse.mousedraggers.push(function(x,y,clicked,e) {
 function update() {
     //XXX: TODO Get the world from the webservice using a XMLHTTPRequest
     var url = "/world";
-    var xhr = new XMLHttpRequest();
+   /* var xhr = new XMLHttpRequest();
     xhr.open('GET', url, true);
     xhr.onreadystatechange = function(){
 	if(xhr.readyState === 4){
@@ -294,7 +303,16 @@ function update() {
 		}
 	};   
 	
-    xhr.send();
+    xhr.send(); */
+    //var tmp;
+    sendJSONXMLHTTPRequest(url, null, function(tmp){ //referenced Ryan Satyabrata's code to avoid doing the commented out part above ^^^^
+	world = tmp;
+	console.log(world);
+        drawNextFrame();
+
+}); 
+
+
     drawFrame();
 }
 
