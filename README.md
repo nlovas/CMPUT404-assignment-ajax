@@ -10,7 +10,7 @@ Make a shared state AJAX drawing program
 Contributors / Licensing
 ========================
 
-Generally everything is LICENSE'D under the Apache 2 license by Abram Hindle.
+Generally everything is LICENSE'D under the Apache 2 license by Abram Hindle and Nicole Lovas.
 
 Resources:  
 
@@ -35,5 +35,22 @@ https://www.w3schools.com/xml/ajax_xmlhttprequest_send.asp
 
 How to use callback functions:
 http://javascriptissexy.com/understand-javascript-callback-functions-and-use-them/
+
+Keyboard symbols:
+http://jaffagazanian.tumblr.com/post/5528389956/cool-characters-symbols
+
+Strokestyle with gradients:
+https://www.w3schools.com/tags/canvas_strokestyle.asp
+
+Randomness in Javascript:
+https://www.w3schools.com/jsref/jsref_random.asp
+
+Javascript switch statements:
+https://www.w3schools.com/js/js_switch.asp
+
+'Pastel Beach Lollipop' Hex colorscheme:
+http://www.color-hex.com/color-palette/33696
+
+
 
 

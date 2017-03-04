@@ -6,7 +6,7 @@
     <meta content='width=device-width; height=device-height; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;' name='viewport' />
     <meta name="viewport" content="width=device-width" />
     <meta name="license" content="
-        Copyright 2013 Abram Hindle
+        Copyright 2017 Abram Hindle and Nicole Lovas
         
         Licensed under the Apache License, Version 2.0 (the "License");
         you may not use this file except in compliance with the License.
@@ -81,8 +81,21 @@ function drawCircle(context,entity) {
         var x = entity["x"];
         var y = entity["y"];
         //moveTo(x,y);
-        fillStyle = entity["colour"];
-        strokeStyle = fillStyle;
+//---------------------------------------------
+
+font = "30pt Impact";
+//var gradient = createLinearGradient(0,0,canvas.width,0);
+//gradient.addColorStop("0", "green");
+//gradient.addColorStop("0.5", "blue");
+//gradient.addColorStop("1.0", "purple");
+//strokeStyle = gradient;
+fillStyle = entity["colour"];
+strokeStyle = fillStyle;
+strokeText("｡◕‿◕｡", x - 75, y); //kawaii
+	
+//---------------------------------------------
+        //fillStyle = entity["colour"];
+        //strokeStyle = fillStyle;
         arc(x, y, (entity["radius"])?entity["radius"]:50, 0, 2.0 * Math.PI, false);  
         stroke();                                
     }
@@ -270,16 +283,83 @@ mouse = (function() {
 // Add the application specific mouse listeners!
 //XXX: TODO Make these prettier!
 mouse.mousedowners.push(function(x,y,clicked,e) {
-    addEntityWithoutName({'x':x,'y':y,'colour':'blue'});
+var rand = Math.floor(Math.random() * 5); //between 0 and 4
+
+    switch (rand){
+    case 0:
+    addEntityWithoutName({'x':x,'y':y,'colour':'#ffe6d1'});
+    break;
+    case 1:
+    addEntityWithoutName({'x':x,'y':y,'colour':'#d5f1ff'});
+    break;
+    case 2:
+    addEntityWithoutName({'x':x,'y':y,'colour':'#cfffed'});
+    break;
+
+    case 3:
+    addEntityWithoutName({'x':x,'y':y,'colour':'#cdd0ff'});
+    break;
+
+    case 4:
+    addEntityWithoutName({'x':x,'y':y,'colour':'#fff8cb'});
+    break;
+    default:
+   }
 });
 
 mouse.mouseuppers.push(function(x,y,clicked,e) {
-    addEntityWithoutName({'x':x,'y':y,'colour':'red'});
+   var rand = Math.floor(Math.random() * 5); //between 0 and 4
+
+    switch (rand){
+    case 0:
+    addEntityWithoutName({'x':x,'y':y,'colour':'#cdd0ff'});
+    break;
+    case 1:
+    addEntityWithoutName({'x':x,'y':y,'colour':'#d5f1ff'});
+    break;
+    case 2:
+    addEntityWithoutName({'x':x,'y':y,'colour':'#cfffed'});
+    break;
+
+    case 3:
+    addEntityWithoutName({'x':x,'y':y,'colour':'#fff8cb'});
+    break;
+
+    case 4:
+    addEntityWithoutName({'x':x,'y':y,'colour':'#ffe6d1'});
+    break;
+    default:
+   }
 });
 
 mouse.mousedraggers.push(function(x,y,clicked,e) {
-    addEntityWithoutName({'x':x,'y':y,'colour':'green',
-                          'radius':10});
+var rand = Math.floor(Math.random() * 5); //between 0 and 4
+//var size = 100;//Math.floor((Math.random() * 20) + 1); //between 1 and 20
+    switch (rand){
+    case 0:
+    addEntityWithoutName({'x':x,'y':y,'colour':'#d5f1ff'});
+    break;
+    case 1:
+    addEntityWithoutName({'x':x,'y':y,'colour':'#ffe6d1'});
+    break;
+    case 2:
+    addEntityWithoutName({'x':x,'y':y,'colour':'#cfffed'});
+    break;
+
+    case 3:
+    addEntityWithoutName({'x':x,'y':y,'colour':'#cdd0ff'});
+    break;
+
+    case 4:
+    addEntityWithoutName({'x':x,'y':y,'colour':'#fff8cb'});
+    break;
+    default:
+   }
+
+
+
+    //addEntityWithoutName({'x':x,'y':y,'colour':'green',
+      //                    'radius':10});
 });
 
 
@@ -307,7 +387,7 @@ function update() {
     //var tmp;
     sendJSONXMLHTTPRequest(url, null, function(tmp){ //referenced Ryan Satyabrata's code to avoid doing the commented out part above ^^^^
 	world = tmp;
-	console.log(world);
+	//console.log(world);
         drawNextFrame();
 
 }); 
