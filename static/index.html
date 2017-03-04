@@ -386,10 +386,11 @@ function update() {
     xhr.send(); */
     //var tmp;
     sendJSONXMLHTTPRequest(url, null, function(tmp){ //referenced Ryan Satyabrata's code to avoid doing the commented out part above ^^^^
+	if(world !== tmp){
 	world = tmp;
 	//console.log(world);
         drawNextFrame();
-
+	}
 }); 
 
 
